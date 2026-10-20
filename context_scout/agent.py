@@ -228,9 +228,33 @@ class ResearchAgent:
             if self.on_step:
                 self.on_step(step)
 
-        # Hit max steps — generate report with what we have
+        # Hit max steps — force a final synthesis from the data gathered so
+        # far rather than returning an analysis-free report.
         state.status = "completed"
-        return self._build_report(state, {})
+        report_data = self._force_final_report(messages)
+        return self._build_report(state, report_data)
+
+    def _force_final_report(self, messages: list[dict]) -> dict:
+        """Ask the LLM to synthesize the final report from gathered data.
+
+        Used when the step budget is exhausted before the agent declared
+        itself done. Returns the ``report`` dict (empty on failure).
+        """
+        messages = messages + [{
+            "role": "user",
+            "content": (
+                "You have reached the research step limit. Do not call any more "
+                "tools. Using everything gathered so far, respond now with ONLY "
+                "the final JSON object in the \"done\" format (thought, tool: null, "
+                "done: true, report: {...}). Fill every report field."
+            ),
+        }]
+        try:
+            parsed = self._parse_agent_response(self._call_llm(messages))
+        except Exception:
+            logger.exception("Final synthesis call failed")
+            return {}
+        return parsed.get("report", {}) if isinstance(parsed, dict) else {}
 
     # ── LLM calls ──────────────────────────────────────────
 

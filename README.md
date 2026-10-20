@@ -91,6 +91,8 @@ The UI shows the agent's reasoning in real-time — you can watch it think, pick
 
 ## Example Output
 
+See a full agent-generated report: [`examples/firecrawl.dev.md`](examples/firecrawl.dev.md)
+
 A report includes:
 - **Target Company Profile** — enriched brand data
 - **Competitive Landscape** — discovered competitors with profiles

@@ -49,7 +49,7 @@ Structured Report (Markdown)
 
 ```bash
 # Clone
-git clone https://github.com/mumer119131/context-scout.git
+git clone https://github.com/umer-2k1/context-scout.git
 cd context-scout
 
 # Install

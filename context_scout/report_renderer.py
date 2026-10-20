@@ -143,7 +143,7 @@ def render_markdown(report: IntelligenceReport) -> str:
     lines.append("")
 
     lines.append("---")
-    lines.append("*Built with [Context Scout](https://github.com/mumer119131/context-scout) "
+    lines.append("*Built with [Context Scout](https://github.com/umer-2k1/context-scout) "
                  "— AI-powered competitive intelligence using [Context.dev](https://context.dev)*")
 
     return "\n".join(lines)

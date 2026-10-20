@@ -66,6 +66,10 @@ with st.sidebar:
 
 # ── Main area ───────────────────────────────────────────────
 st.header("Competitive Intelligence Report")
+st.markdown(
+    "⚡ Powered by **[Context.dev](https://context.dev)** — the agent uses "
+    "Context.dev's API as its realtime web-perception layer."
+)
 
 domain = st.text_input(
     "Enter a company domain to research",
@@ -159,5 +163,5 @@ if run_button:
 st.divider()
 st.caption(
     "Built with [Context.dev](https://context.dev) | "
-    "[GitHub](https://github.com/mumer119131/context-scout)"
+    "[GitHub](https://github.com/umer-2k1/context-scout)"
 )

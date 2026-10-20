@@ -9,4 +9,6 @@ dist/
 build/
 .streamlit/secrets.toml
 report*.md
+digest_state.json
+digest*.md
 screenshots/
